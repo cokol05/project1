@@ -52,12 +52,23 @@ class Json():
         return task
 
     def getting_all_tasks(self):
-        """Отображение всех задач"""
+        """Метод отбражает все задачи"""
         load_tasks = self.load_tasks()
         return [Task.from_dict(task) for task in load_tasks]  # проверить
 
     def creating_a_new_id(self, tasks):
-        """Создает следующее значение идентификатора."""
+        """Метод создает следующее значение идентификатора."""
         if not tasks:
             return 1
         return max(task["id"] for task in self.getting_all_tasks(tasks)) + 1  # проверить
+
+    def delete_task(self, task_id):
+        task_r = self.load_tasks()
+        for i, cur_task in enumerate(task_r):
+            if cur_task["id"] == task_id:
+                del task_r[i]
+                self.write_tasks(task_r)
+                return True
+
+        raise ValueError(f"Задача с идентификатором task_id {task_id} не найдена.")
+    
