@@ -19,7 +19,7 @@ class Command:
         task = Task(title, description, priority, due_date)
         return self.storage.save(task)
 
-    def filter_task(self, status, priority, due_date):
+    def filter_task(self, status, priority, due_date, filter_flag):
         """Метод возвращает отфильтрованный список"""
         tasks = self.storage.getting_all_tasks()
         if status:
@@ -31,6 +31,7 @@ class Command:
         if due_date:
             tasks = list(filter(lambda task: task.due_date == due_date, tasks))
 
-        # Добавить сортировку только задач, ожидающих выполнение или выполненных
+        if not filter_flag:
+            tasks = list(filter(lambda task: task.status == "Выполнено", tasks))
 
         return tasks
