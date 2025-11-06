@@ -5,7 +5,6 @@
 
 import json
 import os
-from traceback import format_tb
 
 from .models import Task
 
@@ -71,4 +70,3 @@ class Json():
                 return True
 
         raise ValueError(f"Задача с идентификатором task_id {task_id} не найдена.")
-    
