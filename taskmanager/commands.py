@@ -57,7 +57,7 @@ class Command:
 def setup_parser():
     """Метод создает команды для командной строки"""
     parser = argparse.ArgumentParser(description="Консольный менеджер задач")
-    subparsers = parser.add_subparsers(dest="commands", help="Команды")
+    subparsers = parser.add_subparsers(dest="command", help="Команды")
 
     add_parser = subparsers.add_parser("add", help="Добавить новую задачу")
     add_parser.add_argument("title", help="Название задачи")
