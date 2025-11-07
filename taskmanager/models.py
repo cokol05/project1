@@ -9,7 +9,7 @@ from datetime import datetime
 
 class Task():
 
-    def __init__(self, title, description, priority, status=None, created_date=None, due_date=None, completed_date=None):
+    def __init__(self, title, description, priority, id = None, status=None, created_date=None, due_date=None, completed_date=None):
         self.id = id
         self.title = title
         self.description = description
