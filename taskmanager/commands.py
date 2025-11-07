@@ -80,7 +80,7 @@ def setup_parser():
     add_parser.add_argument("--due-date", help="Дата выполнения (YYYY-MM-DD)")
 
     list_parser = subparsers.add_parser("list", help="Показать список задач")
-    list_parser.add_argument("--status", choices=["Ожидание завершения выполнения задачи", "Выполнено"], help="Фильтр по статусу")
+    list_parser.add_argument("--status", choices=["Ожидание", "Выполнено"], help="Фильтр по статусу")
     list_parser.add_argument("--priority", choices=["low", "medium", "high"], help="Фильтр по приоритету")
     list_parser.add_argument("--hide-completed", action="store_true", help="Скрыть выполненные задачи")
 

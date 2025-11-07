@@ -53,7 +53,7 @@ class Json():
         return task
 
     def getting_all_tasks(self):
-        """Метод отбражает все задачи"""
+        """Метод отображает все задачи"""
         load_tasks = self.load_tasks()
         return [Task.from_dict(task) for task in load_tasks]  # проверить
 

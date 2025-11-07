@@ -13,7 +13,7 @@ class Task():
         self.id = id
         self.title = title
         self.description = description
-        self.status = status or "Ожидание завершения выполнения задачи"
+        self.status = status or "Ожидание"
         self.priority = priority
         self.created_date = created_date or datetime.now().isoformat()
         self.due_date = due_date
