@@ -39,13 +39,14 @@ class Json():
         Если задача существует, то производит обновление данных об этой задаче"""
         load_tasks = self.load_tasks()
 
-        if task is None:
-            task = self.creating_a_new_id(load_tasks)
+        if task.id is None:
+            task.id = self.creating_a_new_id(load_tasks)
             load_tasks.append(task.to_dict())
         else:
             for i, cur_task in enumerate(load_tasks):
                 if cur_task["id"] == task.id:
                     load_tasks[i] = task.to_dict()
+                    break
 
         self.write_tasks(task)
         return task
