@@ -19,11 +19,13 @@ class Command:
         task = Task(title, description, priority, due_date)
         return self.storage.save_tasks(task)
 
-    def filter_task(self, status, priority, due_date, filter_flag):
+    def filter_task(self, status=None, priority=None, due_date=None, filter_flag=False):
         """Метод возвращает отфильтрованный список."""
         tasks = self.storage.getting_all_tasks()
+
         if status:
-            tasks = list(filter(lambda task: task.status == status, tasks))
+            status_map = {"pending": "Ожидание завершения выполнения задачи", "completed": "Выполнено"}
+            tasks = list(filter(lambda task: task.status == status_map.get(status, status), tasks))
 
         if priority:
             tasks = list(filter(lambda task: task.priority == priority, tasks))
@@ -31,18 +33,20 @@ class Command:
         if due_date:
             tasks = list(filter(lambda task: task.due_date == due_date, tasks))
 
-        if not filter_flag:
-            tasks = list(filter(lambda task: task.status == "Выполнено", tasks))
+        if filter_flag:
+            tasks = list(filter(lambda task: task.status != "Выполнено", tasks))
 
         return tasks
 
     def complete_task(self, task_id):
         """Метод отмечает задачу, как выполненную."""
-        task = self.storage.getting_all_tasks(task_id)
-        if task:
-            task.change_task_execution_status()
-            self.storage.save_tasks(task)
-            return True
+        tasks = self.storage.getting_all_tasks()
+
+        for task in tasks:
+            if task.id == task_id:
+                task.change_task_execution_status()
+                self.storage.save_tasks(task)
+                return True
 
         raise ValueError(f'Невозможно изменить статус задачи с идентификатором {task_id} на "Выполнено".')
 
