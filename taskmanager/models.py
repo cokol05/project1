@@ -32,10 +32,19 @@ class Task():
             'completed_date': self.completed_date,
         }
 
-    def from_dict(self, data):
+    @classmethod
+    def from_dict(cls, data):
         """Метод для создания объекта из словаря."""
-        return (data['id'], data['title'], data['description'], data['status'], data['priority'], data['created_date'],
-                data['due_date'], data['completed_date'])
+        return cls(
+            id=data['id'],
+            title=data['title'],
+            description=data['description'],
+            status=data['status'],
+            priority=data['priority'],
+            created_date=data['created_date'],
+            due_date=data['due_date'],
+            completed_date=data['completed_date']
+        )
 
     def change_the_task_execution_status(self):
         """Метод для изменения статуса выполнения задачи"""
