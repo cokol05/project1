@@ -52,7 +52,7 @@ class Command:
 
     def delete_task(self, task_id):
         """Метод удаляет задачу"""
-        return self.storage.delete_tasks(task_id)
+        return self.storage.delete_task(task_id)
 
     def get_task(self, task_id):
         """Метод возвращает информацию о задаче по её идентификатору."""
