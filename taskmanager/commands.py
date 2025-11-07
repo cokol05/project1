@@ -55,7 +55,7 @@ class Command:
         raise ValueError(f'Невозможно изменить статус задачи с идентификатором {task_id} на "Выполнено".')
 
     def delete_task(self, task_id):
-        """Метод удаляет задачу"""
+        """Метод удаляет задачу."""
         return self.storage.delete_task(task_id)
 
     def get_task(self, task_id):
@@ -69,7 +69,7 @@ class Command:
 
 
 def setup_parser():
-    """Метод создает команды для командной строки"""
+    """Метод создает команды для командной строки."""
     parser = argparse.ArgumentParser(description="Консольный менеджер задач")
     subparsers = parser.add_subparsers(dest="command", help="Команды")
 

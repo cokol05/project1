@@ -16,7 +16,7 @@ class Json():
         self.create_a_file_if_it_does_not_exist()
 
     def create_a_file_if_it_does_not_exist(self):
-        """Метод создаст файл, если он не существует"""
+        """Метод создаст файл, если он не существует."""
         if not os.path.exists(self.filename):
             with open(self.filename, 'w', encoding='utf-8-sig') as f:
                 json.dump(list(), f)
@@ -53,7 +53,7 @@ class Json():
         return task
 
     def getting_all_tasks(self):
-        """Метод отображает все задачи"""
+        """Метод отображает все задачи."""
         load_tasks = self.load_tasks()
         return [Task.from_dict(task) for task in load_tasks]  # проверить
 
@@ -64,6 +64,7 @@ class Json():
         return max(task["id"] for task in tasks) + 1
 
     def delete_task(self, task_id):
+        """Метод удаляет задачи."""
         task_r = self.load_tasks()
         for i, cur_task in enumerate(task_r):
             if cur_task["id"] == task_id:

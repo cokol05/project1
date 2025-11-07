@@ -51,6 +51,7 @@ class Task():
         self.completed_date = datetime.now().isoformat()
 
     def __str__(self):
+        """Метод отображает информацию о задачах."""
         status_icon = "✅" if self.status == "Выполнено" else "⏳"
         priority_icons = {
             "low": "🔽",
