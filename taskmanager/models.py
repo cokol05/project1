@@ -46,11 +46,6 @@ class Task():
             completed_date=data['completed_date']
         )
 
-    def change_the_task_execution_status(self):
-        """Метод для изменения статуса выполнения задачи"""
-        self.status = "Задача выполнена"
-        self.completed_date = datetime.now().isoformat()
-
     def change_task_execution_status(self):
         self.status = "Выполнено"
         self.completed_date = datetime.now().isoformat()
