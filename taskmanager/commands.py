@@ -65,18 +65,18 @@ def setup_parser():
     add_parser.add_argument("--priority", "-p", choices=["low", "medium", "high"], default="medium", help="Приоритет задачи")
     add_parser.add_argument("--due-date", help="Дата выполнения (YYYY-MM-DD)")
 
-    list_parser = argparse.subparsers.add_parser("list", help="Показать список задач")
+    list_parser = parser.subparsers.add_parser("list", help="Показать список задач")
     list_parser.add_argument("--status", choices=["pending", "completed"], help="Фильтр по статусу")
     list_parser.add_argument("--priority", choices=["low", "medium", "high"], help="Фильтр по приоритету")
     list_parser.add_argument("--hide-completed", action="store_true", help="Скрыть выполненные задачи")
 
-    done_parser = argparse.subparsers.add_parser("done", help="Отметить задачу как выполненную")
+    done_parser = parser.subparsers.add_parser("done", help="Отметить задачу как выполненную")
     done_parser.add_argument("task_id", type=int, help="ID задачи")
 
-    delete_parser = argparse.subparsers.add_parser("delete", help="Удалить задачу")
+    delete_parser = parser.subparsers.add_parser("delete", help="Удалить задачу")
     delete_parser.add_argument("task_id", type=int, help="ID задачи")
 
-    view_parser = argparse.subparsers.add_parser("view", help="Просмотреть детали задачи")
+    view_parser = parser.subparsers.add_parser("view", help="Просмотреть детали задачи")
     view_parser.add_argument("task_id", type=int, help="ID задачи")
 
     return parser
