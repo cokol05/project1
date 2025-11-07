@@ -52,3 +52,31 @@ class Command:
 
     def get_task(self, task_id):
         """Метод возвращает информацию о задаче по её идентификатору."""
+
+
+def setup_parser():
+    """Метод создает команды для командной строки"""
+    parser = argparse.ArgumentParser(description="Консольный менеджер задач")
+    parser.add_argument(dest="commands", help="Команды")
+
+    add_parser = parser.subparsers.add_parser("add", help="Добавить новую задачу")
+    add_parser.add_argument("title", help="Название задачи")
+    add_parser.add_argument("--description", "-d", help="Описание задачи", default="")
+    add_parser.add_argument("--priority", "-p", choices=["low", "medium", "high"], default="medium", help="Приоритет задачи")
+    add_parser.add_argument("--due-date", help="Дата выполнения (YYYY-MM-DD)")
+
+    list_parser = argparse.subparsers.add_parser("list", help="Показать список задач")
+    list_parser.add_argument("--status", choices=["pending", "completed"], help="Фильтр по статусу")
+    list_parser.add_argument("--priority", choices=["low", "medium", "high"], help="Фильтр по приоритету")
+    list_parser.add_argument("--hide-completed", action="store_true", help="Скрыть выполненные задачи")
+
+    done_parser = argparse.subparsers.add_parser("done", help="Отметить задачу как выполненную")
+    done_parser.add_argument("task_id", type=int, help="ID задачи")
+
+    delete_parser = argparse.subparsers.add_parser("delete", help="Удалить задачу")
+    delete_parser.add_argument("task_id", type=int, help="ID задачи")
+
+    view_parser = argparse.subparsers.add_parser("view", help="Просмотреть детали задачи")
+    view_parser.add_argument("task_id", type=int, help="ID задачи")
+
+    return parser
