@@ -17,7 +17,7 @@ class Command:
     def add_task(self, title, description, priority, due_date):
         """Метод добавляет новую задачу."""
         task = Task(title, description, priority, due_date)
-        return self.storage.save(task)
+        return self.storage.save_tasks(task)
 
     def filter_task(self, status, priority, due_date, filter_flag):
         """Метод возвращает отфильтрованный список."""
