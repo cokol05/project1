@@ -13,6 +13,7 @@ class Json():
 
     def __init__(self, filename):
         self.filename = filename
+        self.create_a_file_if_it_does_not_exist()
 
     def create_a_file_if_it_does_not_exist(self):
         """Метод создаст файл, если он не существует"""
@@ -32,7 +33,7 @@ class Json():
     def write_tasks(self, tasks):
         """Запись изменений в json-файл."""
         with open(self.filename, 'w', encoding='utf-8-sig') as f:
-            json.dump(tasks, f, indent=4)
+            json.dump(tasks, f, indent=4, ensure_ascii=False)
 
     def save_tasks(self, task):
         """Метод записывает или обновляет информацию о текущей задачи в json-файл.
