@@ -29,8 +29,7 @@ class Command:
         tasks = self.storage.getting_all_tasks()
 
         if status:
-            status_map = {"pending": "Ожидание завершения выполнения задачи", "completed": "Выполнено"}
-            tasks = list(filter(lambda task: task.status == status_map.get(status, status), tasks))
+            tasks = list(filter(lambda task: task.status == status, tasks))
 
         if priority:
             tasks = list(filter(lambda task: task.priority == priority, tasks))
@@ -61,6 +60,12 @@ class Command:
 
     def get_task(self, task_id):
         """Метод возвращает информацию о задаче по её идентификатору."""
+        tasks = self.storage.getting_all_tasks()
+        for task in tasks:
+            if task.id == task_id:
+                return task
+
+        return None
 
 
 def setup_parser():
@@ -75,7 +80,7 @@ def setup_parser():
     add_parser.add_argument("--due-date", help="Дата выполнения (YYYY-MM-DD)")
 
     list_parser = subparsers.add_parser("list", help="Показать список задач")
-    list_parser.add_argument("--status", choices=["pending", "completed"], help="Фильтр по статусу")
+    list_parser.add_argument("--status", choices=["Ожидание завершения выполнения задачи", "Выполнено"], help="Фильтр по статусу")
     list_parser.add_argument("--priority", choices=["low", "medium", "high"], help="Фильтр по приоритету")
     list_parser.add_argument("--hide-completed", action="store_true", help="Скрыть выполненные задачи")
 
