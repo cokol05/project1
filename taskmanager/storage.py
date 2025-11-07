@@ -48,7 +48,7 @@ class Json():
                     load_tasks[i] = task.to_dict()
                     break
 
-        self.write_tasks(task)
+        self.write_tasks(load_tasks)
         return task
 
     def getting_all_tasks(self):
@@ -60,7 +60,7 @@ class Json():
         """Метод создает следующее значение идентификатора."""
         if not tasks:
             return 1
-        return max(task["id"] for task in self.getting_all_tasks(tasks)) + 1  # проверить
+        return max(task["id"] for task in tasks) + 1
 
     def delete_task(self, task_id):
         task_r = self.load_tasks()
