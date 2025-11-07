@@ -51,4 +51,16 @@ class Task():
         self.completed_date = datetime.now().isoformat()
 
     def __str__(self):
-        pass
+        status_icon = "✅" if self.status == "Выполнено" else "⏳"
+        priority_icons = {
+            "low": "🔽",
+            "medium": "🔼",
+            "high": "🔴"
+        }
+        priority_icon = priority_icons.get(self.priority, "🔼")
+
+        due_info = ""
+        if self.due_date:
+            due_info = f" | 📅 {self.due_date}"
+
+        return f"{status_icon} #{self.id} {priority_icon} {self.title}{due_info}"
