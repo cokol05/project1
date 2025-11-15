@@ -10,12 +10,32 @@ from .storage import Json
 
 
 class Command:
+    """Класс служит для управления задачами через командную строку.
+
+    Attributes:
+        storage: Объект для работы с хранилищем задач.
+    """
 
     def __init__(self, storage: Json = None):
+        """Метод инициализирует атрибут класса.
+
+        Args:
+            storage: Объект хранилища задач. Если не указан, используется Json("tasks.json").
+        """
         self.storage = storage or Json("tasks.json")
 
     def add_task(self, title, description, priority, due_date):
-        """Метод добавляет новую задачу."""
+        """Метод добавляет новую задачу.
+
+        Args:
+            title: Название задачи.
+            description: Описание задачи.
+            priority: Приоритет задачи (low, medium, high).
+            due_date: Дата выполнения в формате YYYY-MM-DD.
+
+        Returns:
+            bool: Результат операции сохранения.
+        """
         task = Task(
             title=title,
             description=description,
@@ -25,7 +45,17 @@ class Command:
         return self.storage.save_tasks(task)
 
     def filter_task(self, status=None, priority=None, due_date=None, filter_flag=False):
-        """Метод возвращает отфильтрованный список."""
+        """Метод возвращает отфильтрованный список.
+
+        Args:
+            status: Статус задачи для фильтрации ("Ожидание", "Выполнено").
+            priority: Приоритет задачи для фильтрации ("low", "medium", "high").
+            due_date: Дата выполнения для фильтрации.
+            filter_flag: Если True, скрывает выполненные задачи.
+
+        Returns:
+            list: Отфильтрованный список объектов Task.
+        """
         tasks = self.storage.getting_all_tasks()
 
         if status:
@@ -43,7 +73,17 @@ class Command:
         return tasks
 
     def complete_task(self, task_id):
-        """Метод отмечает задачу, как выполненную."""
+        """Метод отмечает задачу, как выполненную.
+
+        Args:
+            task_id: Идентификатор задачи для изменения статуса.
+
+        Returns:
+            bool: True если операция выполнена успешно.
+
+        Raises:
+            ValueError: Если задача с указанным ID не найдена.
+        """
         tasks = self.storage.getting_all_tasks()
 
         for task in tasks:
@@ -55,11 +95,26 @@ class Command:
         raise ValueError(f'Невозможно изменить статус задачи с идентификатором {task_id} на "Выполнено".')
 
     def delete_task(self, task_id):
-        """Метод удаляет задачу."""
+        """Метод удаляет задачу.
+
+        Args:
+            task_id: Идентификатор задачи для удаления.
+
+        Returns:
+            bool: Результат операции удаления.
+        """
         return self.storage.delete_task(task_id)
 
     def get_task(self, task_id):
-        """Метод возвращает информацию о задаче по её идентификатору."""
+        """Метод возвращает информацию о задаче по её идентификатору.
+
+        Args:
+            task_id: Идентификатор задачи.
+
+        Returns:
+            Task: Если объект задачи найден.
+            None: Если Объект задачи не найден.
+        """
         tasks = self.storage.getting_all_tasks()
         for task in tasks:
             if task.id == task_id:
@@ -69,7 +124,11 @@ class Command:
 
 
 def setup_parser():
-    """Метод создает команды для командной строки."""
+    """Метод создает команды для командной строки.
+
+    Returns:
+        argparse.ArgumentParser: Настроенный парсер аргументов.
+    """
     parser = argparse.ArgumentParser(description="Консольный менеджер задач")
     subparsers = parser.add_subparsers(dest="command", help="Команды")
 
