@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>taskmanager.commands &mdash; документация Console task manager 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Console task manager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../taskmanager.html">Модуль taskmanager</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Console task manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">taskmanager.commands</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код taskmanager.commands</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">В этом файле содержатся обработчики команд для командной строки main.py.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span><span class="w">  </span><span class="nn">argparse</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Task</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">Json</span>
+
+
+<div class="viewcode-block" id="Command">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Command</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Класс служит для управления задачами через командную строку.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        storage: Объект для работы с хранилищем задач.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Command.__init__">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.__init__">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage</span><span class="p">:</span> <span class="n">Json</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод инициализирует атрибут класса.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            storage: Объект хранилища задач. Если не указан, используется Json(&quot;tasks.json&quot;).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">storage</span> <span class="ow">or</span> <span class="n">Json</span><span class="p">(</span><span class="s2">&quot;tasks.json&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Command.add_task">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.add_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">priority</span><span class="p">,</span> <span class="n">due_date</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод добавляет новую задачу.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            title: Название задачи.</span>
+<span class="sd">            description: Описание задачи.</span>
+<span class="sd">            priority: Приоритет задачи (low, medium, high).</span>
+<span class="sd">            due_date: Дата выполнения в формате YYYY-MM-DD.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Результат операции сохранения.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="n">priority</span><span class="p">,</span>
+            <span class="n">due_date</span><span class="o">=</span><span class="n">due_date</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save_tasks</span><span class="p">(</span><span class="n">task</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Command.filter_task">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.filter_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">due_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод возвращает отфильтрованный список.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            status: Статус задачи для фильтрации (&quot;Ожидание&quot;, &quot;Выполнено&quot;).</span>
+<span class="sd">            priority: Приоритет задачи для фильтрации (&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;).</span>
+<span class="sd">            due_date: Дата выполнения для фильтрации.</span>
+<span class="sd">            filter_flag: Если True, скрывает выполненные задачи.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Отфильтрованный список объектов Task.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">getting_all_tasks</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">task</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">status</span><span class="p">,</span> <span class="n">tasks</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">priority</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">task</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">priority</span> <span class="o">==</span> <span class="n">priority</span><span class="p">,</span> <span class="n">tasks</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">due_date</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">task</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">due_date</span> <span class="o">==</span> <span class="n">due_date</span><span class="p">,</span> <span class="n">tasks</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">filter_flag</span><span class="p">:</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">task</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="s2">&quot;Выполнено&quot;</span><span class="p">,</span> <span class="n">tasks</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">tasks</span></div>
+
+
+<div class="viewcode-block" id="Command.complete_task">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.complete_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">complete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод отмечает задачу, как выполненную.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task_id: Идентификатор задачи для изменения статуса.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True если операция выполнена успешно.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: Если задача с указанным ID не найдена.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">getting_all_tasks</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">task_id</span><span class="p">:</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">change_task_execution_status</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save_tasks</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Невозможно изменить статус задачи с идентификатором </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s1"> на &quot;Выполнено&quot;.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Command.delete_task">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.delete_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод удаляет задачу.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task_id: Идентификатор задачи для удаления.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Результат операции удаления.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">delete_task</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Command.get_task">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.Command.get_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод возвращает информацию о задаче по её идентификатору.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task_id: Идентификатор задачи.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Task: Если объект задачи найден.</span>
+<span class="sd">            None: Если Объект задачи не найден.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">getting_all_tasks</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">task_id</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">task</span>
+
+        <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="setup_parser">
+<a class="viewcode-back" href="../../taskmanager.commands.html#taskmanager.commands.setup_parser">[документация]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_parser</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Метод создает команды для командной строки.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        argparse.ArgumentParser: Настроенный парсер аргументов.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Консольный менеджер задач&quot;</span><span class="p">)</span>
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s2">&quot;command&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Команды&quot;</span><span class="p">)</span>
+
+    <span class="n">add_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Добавить новую задачу&quot;</span><span class="p">)</span>
+    <span class="n">add_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Название задачи&quot;</span><span class="p">)</span>
+    <span class="n">add_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--description&quot;</span><span class="p">,</span> <span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Описание задачи&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">add_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--priority&quot;</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Приоритет задачи&quot;</span><span class="p">)</span>
+    <span class="n">add_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--due-date&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Дата выполнения (YYYY-MM-DD)&quot;</span><span class="p">)</span>
+
+    <span class="n">list_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Показать список задач&quot;</span><span class="p">)</span>
+    <span class="n">list_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--status&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Ожидание&quot;</span><span class="p">,</span> <span class="s2">&quot;Выполнено&quot;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Фильтр по статусу&quot;</span><span class="p">)</span>
+    <span class="n">list_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--priority&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Фильтр по приоритету&quot;</span><span class="p">)</span>
+    <span class="n">list_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--hide-completed&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Скрыть выполненные задачи&quot;</span><span class="p">)</span>
+
+    <span class="n">done_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Отметить задачу как выполненную&quot;</span><span class="p">)</span>
+    <span class="n">done_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;task_id&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;ID задачи&quot;</span><span class="p">)</span>
+
+    <span class="n">delete_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Удалить задачу&quot;</span><span class="p">)</span>
+    <span class="n">delete_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;task_id&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;ID задачи&quot;</span><span class="p">)</span>
+
+    <span class="n">view_parser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Просмотреть детали задачи&quot;</span><span class="p">)</span>
+    <span class="n">view_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;task_id&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;ID задачи&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anton. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

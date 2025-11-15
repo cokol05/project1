@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>taskmanager.models module &mdash; документация Console task manager 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e35015f7"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="taskmanager.storage module" href="taskmanager.storage.html" />
+    <link rel="prev" title="Модуль taskmanager" href="taskmanager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Console task manager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="taskmanager.html">Модуль taskmanager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="taskmanager.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">taskmanager.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#taskmanager.models.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="taskmanager.storage.html">taskmanager.storage module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="taskmanager.commands.html">taskmanager.commands module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Console task manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="taskmanager.html">Модуль taskmanager</a></li>
+      <li class="breadcrumb-item active">taskmanager.models module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/taskmanager.models.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-taskmanager.models">
+<span id="taskmanager-models-module"></span><h1>taskmanager.models module<a class="headerlink" href="#module-taskmanager.models" title="Ссылка на этот заголовок"></a></h1>
+<p>Этот файл содержит класс Task, который описывает структуру одной задачи.
+Здесь определяются, какие данные хранятся в каждой задаче.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="taskmanager.models.Task">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">taskmanager.models.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completed_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс служит для описания структуры одной задачи.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#taskmanager.models.Task.id" title="Ссылка на это определение"></a></dt>
+<dd><p>Уникальный идентификатор задачи</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#taskmanager.models.Task.title" title="Ссылка на это определение"></a></dt>
+<dd><p>Название задачи</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#taskmanager.models.Task.description" title="Ссылка на это определение"></a></dt>
+<dd><p>Подробное описание задачи</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#taskmanager.models.Task.status" title="Ссылка на это определение"></a></dt>
+<dd><p>Статус выполнения задачи</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.priority">
+<span class="sig-name descname"><span class="pre">priority</span></span><a class="headerlink" href="#taskmanager.models.Task.priority" title="Ссылка на это определение"></a></dt>
+<dd><p>Уровень приоритета задачи</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.created_date">
+<span class="sig-name descname"><span class="pre">created_date</span></span><a class="headerlink" href="#taskmanager.models.Task.created_date" title="Ссылка на это определение"></a></dt>
+<dd><p>Дата создания в формате ISO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.due_date">
+<span class="sig-name descname"><span class="pre">due_date</span></span><a class="headerlink" href="#taskmanager.models.Task.due_date" title="Ссылка на это определение"></a></dt>
+<dd><p>Дата выполнения в формате ISO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="taskmanager.models.Task.completed_date">
+<span class="sig-name descname"><span class="pre">completed_date</span></span><a class="headerlink" href="#taskmanager.models.Task.completed_date" title="Ссылка на это определение"></a></dt>
+<dd><p>Дата завершения в формате ISO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="taskmanager.models.Task.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completed_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task.__init__"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Метод инициализирует необходимые атрибуты.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – Название задачи;</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Подробное описание задачи;</p></li>
+<li><p><strong>priority</strong> (<em>str</em>) – Уровень приоритета („low“, „medium“, „high“);</p></li>
+<li><p><strong>due_date</strong> (<em>str</em><em>, </em><em>optional</em>) – Дата выполнения в формате ISO. По умолчанию None;</p></li>
+<li><p><strong>id</strong> (<em>int</em><em>, </em><em>optional</em>) – Уникальный идентификатор. По умолчанию None;</p></li>
+<li><p><strong>status</strong> (<em>str</em><em>, </em><em>optional</em>) – Статус выполнения. По умолчанию „Ожидание“;</p></li>
+<li><p><strong>created_date</strong> (<em>str</em><em>, </em><em>optional</em>) – Дата создания. По умолчанию текущая дата;</p></li>
+<li><p><strong>completed_date</strong> (<em>str</em><em>, </em><em>optional</em>) – Дата завершения. По умолчанию None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="taskmanager.models.Task.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task.__str__"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task.__str__" title="Ссылка на это определение"></a></dt>
+<dd><p>Метод отображает информацию о задачах.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Строка с форматированием, показывающая основную информацию о задаче.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="taskmanager.models.Task.change_task_execution_status">
+<span class="sig-name descname"><span class="pre">change_task_execution_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task.change_task_execution_status"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task.change_task_execution_status" title="Ссылка на это определение"></a></dt>
+<dd><p>Метод изменяет статус задачи на „Выполнено“ и устанавливает текущую дату и время, записывая в completed_date.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="taskmanager.models.Task.from_dict">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task.from_dict"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task.from_dict" title="Ссылка на это определение"></a></dt>
+<dd><p>Метод для создания объекта из словаря.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – Словарь, содержащий данные задачи, полученный из to_dict().</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Новый объект задачи с данными из словаря.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#taskmanager.models.Task" title="taskmanager.models.Task">Task</a></p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – Если в словаре отсутствуют обязательные ключи.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="taskmanager.models.Task.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/taskmanager/models.html#Task.to_dict"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#taskmanager.models.Task.to_dict" title="Ссылка на это определение"></a></dt>
+<dd><p>Метод для преобразования в словарь для сохранения.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Словарь, содержащий данные задачи, где ключи - названия полей, значения - соответствующие им данные.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="taskmanager.html" class="btn btn-neutral float-left" title="Модуль taskmanager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="taskmanager.storage.html" class="btn btn-neutral float-right" title="taskmanager.storage module" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anton. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

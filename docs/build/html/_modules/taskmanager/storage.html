@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>taskmanager.storage &mdash; документация Console task manager 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Console task manager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../taskmanager.html">Модуль taskmanager</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Console task manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">taskmanager.storage</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код taskmanager.storage</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">В этом файле размещены функции, отвечающие за действия над задачами.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Task</span>
+
+
+<div class="viewcode-block" id="Json">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Json</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Класс служит для взаимодействия программы с json-файлом.</span>
+
+<span class="sd">    Atributes:</span>
+<span class="sd">        filename (str): Путь к json-файлу.</span>
+
+<span class="sd">    Позволяет:</span>
+<span class="sd">        создавать,</span>
+<span class="sd">        записывать,</span>
+<span class="sd">        сохранять изменения в этот файл,</span>
+
+<span class="sd">        читать,</span>
+<span class="sd">        выводить список задач из файла,</span>
+
+<span class="sd">        создавать новый ID,</span>
+<span class="sd">        удалять задачу, перезаписывая json-файл.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Json.__init__">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.__init__">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод инициализирует атрибут класса.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filename (str): Путь к json-файлу.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_a_file_if_it_does_not_exist</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Json.create_a_file_if_it_does_not_exist">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.create_a_file_if_it_does_not_exist">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_a_file_if_it_does_not_exist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод создаст json-файл с пустым списком, если он не существует.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">list</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Json.load_tasks">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.load_tasks">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод считывает информацию о существующих задачах из json-файла.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Список словарей с информацией о задачах из json-файла ИЛИ пустой список в случае ошибки.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Возникла ошибка при попытки чтения файла! Возможно, файл был перемещён или повреждён.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="Json.write_tasks">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.write_tasks">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Запись изменений в json-файл.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tasks (list): Список задач для записи их в json-файл.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Json.save_tasks">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.save_tasks">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод записывает или обновляет информацию о текущей задачи в json-файл.</span>
+<span class="sd">        Если задача существует, то производит обновление данных об этой задаче.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task (Task): Объект задачи для сохранения.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Task: Сохраненная задача с обновлёнными данными. Новые задачи вернутся с присвоенным ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">load_tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">creating_a_new_id</span><span class="p">(</span><span class="n">load_tasks</span><span class="p">)</span>
+            <span class="n">load_tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cur_task</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">load_tasks</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">cur_task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+                    <span class="n">load_tasks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                    <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_tasks</span><span class="p">(</span><span class="n">load_tasks</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">task</span></div>
+
+
+<div class="viewcode-block" id="Json.getting_all_tasks">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.getting_all_tasks">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getting_all_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод отображает все задачи.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Список объектов Task, преобразованных из json-файла.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">load_tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Task</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">task</span><span class="p">)</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">load_tasks</span><span class="p">]</span>  <span class="c1"># проверить</span></div>
+
+
+<div class="viewcode-block" id="Json.creating_a_new_id">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.creating_a_new_id">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">creating_a_new_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод создает следующее значение идентификатора.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tasks (list): Список существующих задач.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Новый уникальный идентификатор для новой задачи ИЛИ 1, если это первая задача.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Json.delete_task">
+<a class="viewcode-back" href="../../taskmanager.storage.html#taskmanager.storage.Json.delete_task">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Метод удаляет задачи.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task_id (int): Идентификатор задачи.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True, если задача успешно удалена.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: Если задача не найдена по идентификатору.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">task_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_tasks</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cur_task</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">task_r</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">cur_task</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">task_id</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">task_r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">write_tasks</span><span class="p">(</span><span class="n">task_r</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Задача с идентификатором task_id </span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> не найдена.&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anton. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
