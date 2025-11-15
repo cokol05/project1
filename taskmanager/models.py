@@ -8,7 +8,18 @@ from datetime import datetime
 
 
 class Task:
-    """Класс служит для описания структуры одной задачи."""
+    """Класс служит для описания структуры одной задачи.
+
+    Attributes:
+        id (int, optional): Уникальный идентификатор задачи
+        title (str): Название задачи
+        description (str): Подробное описание задачи
+        status (str): Статус выполнения задачи
+        priority (str): Уровень приоритета задачи
+        created_date (str): Дата создания в формате ISO
+        due_date (str, optional): Дата выполнения в формате ISO
+        completed_date (str, optional): Дата завершения в формате ISO
+    """
 
     def __init__(self, title, description, priority, due_date=None, id = None, status=None, created_date=None, completed_date=None):
         """Метод инициализирует необходимые атрибуты.
