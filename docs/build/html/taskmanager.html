@@ -82,7 +82,109 @@
              
   <section id="module-taskmanager">
 <span id="taskmanager"></span><h1>Модуль taskmanager<a class="headerlink" href="#module-taskmanager" title="Ссылка на этот заголовок"></a></h1>
-<p>Консольный менеджер задач</p>
+<p>Существующие команды для main.py:
+usage: main.py [-h] {add,list,done,delete,view} …</p>
+<dl>
+<dt>positional arguments:</dt><dd><dl>
+<dt>{add,list,done,delete,view}</dt><dd><blockquote>
+<div><p>Команды</p>
+</div></blockquote>
+<p>add                 Добавить новую задачу
+list                Показать список задач
+done                Отметить задачу как выполненную
+delete              Удалить задачу
+view                Просмотреть детали задачи</p>
+</dd>
+</dl>
+</dd>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Подробное описание команды add:
+usage: main.py add [-h] [–description DESCRIPTION] [–priority {low,medium,high}] [–due-date DUE_DATE] title</p>
+<dl>
+<dt>positional arguments:</dt><dd><p>title                 Название задачи</p>
+</dd>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt><kbd><span class="option">--description</span>, <span class="option">-d <var>DESCRIPTION</var></span></kbd></dt>
+<dd><p>Описание задачи</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>–priority, -p {low,medium,high}</dt><dd><p>Приоритет задачи</p>
+</dd>
+</dl>
+<dl class="option-list">
+<dt><kbd><span class="option">--due-date <var>DUE_DATE</var></span></kbd></dt>
+<dd><p>Дата выполнения (YYYY-MM-DD)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Подробное описание команды list:
+usage: main.py list [-h] [–status {Ожидание,Выполнено}] [–priority {low,medium,high}] [–hide-completed]</p>
+<dl>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>–status {Ожидание,Выполнено}</dt><dd><p>Фильтр по статусу</p>
+</dd>
+<dt>–priority {low,medium,high}</dt><dd><p>Фильтр по приоритету</p>
+</dd>
+</dl>
+<dl class="option-list">
+<dt><kbd><span class="option">--hide-completed</span></kbd></dt>
+<dd><p>Скрыть выполненные задачи</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Подробное описание команды done:
+usage: main.py done [-h] task_id</p>
+<dl>
+<dt>positional arguments:</dt><dd><p>task_id     ID задачи</p>
+</dd>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Подробное описание команды delete:
+usage: main.py delete [-h] task_id</p>
+<dl>
+<dt>positional arguments:</dt><dd><p>task_id     ID задачи</p>
+</dd>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Подробное описание команды view:
+usage: main.py view [-h] task_id</p>
+<dl>
+<dt>positional arguments:</dt><dd><p>task_id     ID задачи</p>
+</dd>
+<dt>options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span>, <span class="option">--help</span></kbd></dt>
+<dd><p>show this help message and exit</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок"></a></h2>
 <div class="toctree-wrapper compound">

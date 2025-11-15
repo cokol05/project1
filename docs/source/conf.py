@@ -44,3 +44,8 @@ html_static_path = ['_static']
 
 html_show_sourcelink = True
 html_show_sphinx = False
+
+
+latex_engine = 'pdflatex'
+latex_elements = {}
+latex_use_xindy = False

@@ -1,0 +1,40 @@
+\indexentry{module@\spxentry{module}!taskmanager@\spxentry{taskmanager}|hyperpage}{3}
+\indexentry{taskmanager@\spxentry{taskmanager}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{module@\spxentry{module}!taskmanager.models@\spxentry{taskmanager.models}|hyperpage}{4}
+\indexentry{taskmanager.models@\spxentry{taskmanager.models}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{Task (класс в taskmanager.models)@\spxentry{Task}\spxextra{класс в taskmanager.models}|hyperpage}{4}
+\indexentry{id (атрибут taskmanager.models.Task)@\spxentry{id}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{4}
+\indexentry{title (атрибут taskmanager.models.Task)@\spxentry{title}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{4}
+\indexentry{description (атрибут taskmanager.models.Task)@\spxentry{description}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{4}
+\indexentry{status (атрибут taskmanager.models.Task)@\spxentry{status}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{4}
+\indexentry{priority (атрибут taskmanager.models.Task)@\spxentry{priority}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{5}
+\indexentry{created\_date (атрибут taskmanager.models.Task)@\spxentry{created\_date}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{5}
+\indexentry{due\_date (атрибут taskmanager.models.Task)@\spxentry{due\_date}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{5}
+\indexentry{completed\_date (атрибут taskmanager.models.Task)@\spxentry{completed\_date}\spxextra{атрибут taskmanager.models.Task}|hyperpage}{5}
+\indexentry{\_\_init\_\_() (метод taskmanager.models.Task)@\spxentry{\_\_init\_\_()}\spxextra{метод taskmanager.models.Task}|hyperpage}{5}
+\indexentry{\_\_str\_\_() (метод taskmanager.models.Task)@\spxentry{\_\_str\_\_()}\spxextra{метод taskmanager.models.Task}|hyperpage}{5}
+\indexentry{change\_task\_execution\_status() (метод taskmanager.models.Task)@\spxentry{change\_task\_execution\_status()}\spxextra{метод taskmanager.models.Task}|hyperpage}{5}
+\indexentry{from\_dict() (метод класса taskmanager.models.Task)@\spxentry{from\_dict()}\spxextra{метод класса taskmanager.models.Task}|hyperpage}{6}
+\indexentry{to\_dict() (метод taskmanager.models.Task)@\spxentry{to\_dict()}\spxextra{метод taskmanager.models.Task}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!taskmanager.storage@\spxentry{taskmanager.storage}|hyperpage}{6}
+\indexentry{taskmanager.storage@\spxentry{taskmanager.storage}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{Json (класс в taskmanager.storage)@\spxentry{Json}\spxextra{класс в taskmanager.storage}|hyperpage}{6}
+\indexentry{\_\_init\_\_() (метод taskmanager.storage.Json)@\spxentry{\_\_init\_\_()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{6}
+\indexentry{create\_a\_file\_if\_it\_does\_not\_exist() (метод taskmanager.storage.Json)@\spxentry{create\_a\_file\_if\_it\_does\_not\_exist()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{6}
+\indexentry{creating\_a\_new\_id() (метод taskmanager.storage.Json)@\spxentry{creating\_a\_new\_id()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{6}
+\indexentry{delete\_task() (метод taskmanager.storage.Json)@\spxentry{delete\_task()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{7}
+\indexentry{getting\_all\_tasks() (метод taskmanager.storage.Json)@\spxentry{getting\_all\_tasks()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{7}
+\indexentry{load\_tasks() (метод taskmanager.storage.Json)@\spxentry{load\_tasks()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{7}
+\indexentry{save\_tasks() (метод taskmanager.storage.Json)@\spxentry{save\_tasks()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{7}
+\indexentry{write\_tasks() (метод taskmanager.storage.Json)@\spxentry{write\_tasks()}\spxextra{метод taskmanager.storage.Json}|hyperpage}{7}
+\indexentry{module@\spxentry{module}!taskmanager.commands@\spxentry{taskmanager.commands}|hyperpage}{8}
+\indexentry{taskmanager.commands@\spxentry{taskmanager.commands}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{Command (класс в taskmanager.commands)@\spxentry{Command}\spxextra{класс в taskmanager.commands}|hyperpage}{8}
+\indexentry{storage (атрибут taskmanager.commands.Command)@\spxentry{storage}\spxextra{атрибут taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{\_\_init\_\_() (метод taskmanager.commands.Command)@\spxentry{\_\_init\_\_()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{add\_task() (метод taskmanager.commands.Command)@\spxentry{add\_task()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{complete\_task() (метод taskmanager.commands.Command)@\spxentry{complete\_task()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{delete\_task() (метод taskmanager.commands.Command)@\spxentry{delete\_task()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{filter\_task() (метод taskmanager.commands.Command)@\spxentry{filter\_task()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{8}
+\indexentry{get\_task() (метод taskmanager.commands.Command)@\spxentry{get\_task()}\spxextra{метод taskmanager.commands.Command}|hyperpage}{9}
+\indexentry{setup\_parser() (в модуле taskmanager.commands)@\spxentry{setup\_parser()}\spxextra{в модуле taskmanager.commands}|hyperpage}{9}
